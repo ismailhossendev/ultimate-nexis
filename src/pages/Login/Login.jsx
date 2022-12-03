@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import image from "../../asset/image/image.png"
 import logo from "../../asset/logo/logo.png"
@@ -43,8 +43,8 @@ const Login = () => {
                         icon: 'success',
                         confirmButtonText: 'confirm'
                     })
-                    navigate('/attendance')
                     localStorage.setItem('token', data.access_token)
+                    navigate('/attendance')
                 }
 
             })

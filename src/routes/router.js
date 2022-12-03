@@ -7,12 +7,6 @@ import Step2 from "../pages/signUp/Step2";
 import Step3 from "../pages/signUp/Step3";
 
 
-let headersList = {
-    "Accept": "*/*",
-    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-    "Authorization": "Bearer " + localStorage.getItem("token")
-}
-
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -43,9 +37,6 @@ export const router = createBrowserRouter([
     },
     {
         path: "/attendance",
-        loader: () => fetch("https://test.nexisltd.com/test", {
-            headers: headersList
-        }),
         element: <Attendance />
     }
 

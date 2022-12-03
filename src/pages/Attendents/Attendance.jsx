@@ -1,9 +1,23 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useEffect } from 'react';
 import logo from "../../asset/logo/logo.png"
 import DataTable from './DataTable';
 const Attendance = () => {
-    const data = useLoaderData()
+    const [data, setData] = React.useState([])
+
+
+    useEffect(() => {
+        fetch('https://test.nexisltd.com/test', {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                setData(data)
+            })
+    }, []);
+
     return (
         <div className='container mx-auto'>
             <div className="mt-[62px]">
