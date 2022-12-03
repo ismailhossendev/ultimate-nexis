@@ -1,13 +1,22 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
+import Attendance from "../pages/Attendents/Attendance";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/signUp/SignUp";
 import Step1 from "../pages/signUp/Step1";
 import Step2 from "../pages/signUp/Step2";
 import Step3 from "../pages/signUp/Step3";
+
+
+let headersList = {
+    "Accept": "*/*",
+    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+    "Authorization": "Bearer " + localStorage.getItem("token")
+}
+
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <div>Home</div>
+        element: <Navigate to="/signup" />,
     },
     {
         path: "/signup",
@@ -30,7 +39,14 @@ export const router = createBrowserRouter([
     },
     {
         path: "/login",
-        element: <Login /> 
+        element: <Login />
+    },
+    {
+        path: "/attendance",
+        loader: () => fetch("https://test.nexisltd.com/test", {
+            headers: headersList
+        }),
+        element: <Attendance />
     }
 
 ])

@@ -43,7 +43,8 @@ const Login = () => {
                         icon: 'success',
                         confirmButtonText: 'confirm'
                     })
-
+                    console.log(data);
+                    localStorage.setItem('token', data.access_token)
                 }
 
             })
